@@ -10,6 +10,14 @@ fi
 sudo apt update
 sudo apt upgrade -y
 
+# Install IOTECH dependencies 
+apt-get install lsb-release apt-transport-https curl gnupg
+curl -fsSL https://iotech.jfrog.io/artifactory/api/gpg/key/public | gpg --dearmor -o /usr/share/keyrings/iotech.gpg
+echo "deb [signed-by=/usr/share/keyrings/iotech.gpg] https://iotech.jfrog.io/iotech/debian-release $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/iotech.list
+apt-get update
+apt-get install iotech-iot-1.5-dev
+
+
 # Install required dependencies
 sudo apt install -y gcc cmake make libcurl4-openssl-dev libmicrohttpd-dev libyaml-dev libcbor-dev libpaho-mqtt-dev uuid-dev libhiredis-dev iotech-c-utils-dev
 export PATH=$PATH:/sbin:/usr/sbin:/usr/local/sbin:/usr/local/bin
