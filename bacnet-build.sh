@@ -11,7 +11,7 @@ sudo apt update
 sudo apt upgrade -y
 
 # Install IOTECH dependencies 
-apt-get install lsb-release apt-transport-https curl gnupg
+apt-get install lsb-release apt-transport-https curl gnupg git
 curl -fsSL https://iotech.jfrog.io/artifactory/api/gpg/key/public | gpg --dearmor -o /usr/share/keyrings/iotech.gpg
 echo "deb [signed-by=/usr/share/keyrings/iotech.gpg] https://iotech.jfrog.io/iotech/debian-release $(lsb_release -cs) main" | tee -a /etc/apt/sources.list.d/iotech.list
 apt-get update
